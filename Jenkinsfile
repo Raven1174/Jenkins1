@@ -44,12 +44,7 @@ pipeline {
             steps {
                 script{
                     sh ''' 
-                        docker run -it
-                        -v /etc/localtime/:etc/localtime
-                        -v $HOME/.rainboow_oauth:root/.rainbow_oauth
-                        -v $HOME/.rainbow_config.json:/root/.rainbow_config.json
-                        --name rainbowstream
-                        jess/rainbowstream
+                        docker run -it -v /etc/localtime/:etc/localtime -v $HOME/.rainboow_oauth:root/.rainbow_oauth -v $HOME/.rainbow_config.json:/root/.rainbow_config.json --name ${name_final} ${name_imagen}
                     '''
                     }
                     
