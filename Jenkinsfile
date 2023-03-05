@@ -33,7 +33,8 @@ pipeline {
             steps {
                 script{
                     sh ''' 
-                    docker pull ${name_imagen}:${tag_imagen}
+                    echo ${name_imagen}
+                    #docker pull ${name_imagen}:${tag_imagen}
                     '''
                     }
                     
