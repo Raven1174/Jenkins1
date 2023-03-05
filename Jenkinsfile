@@ -33,8 +33,7 @@ pipeline {
             steps {
                 script{
                     sh ''' 
-                    echo ${name_imagen}
-                    #docker pull ${name_imagen}:${tag_imagen}
+                    docker pull ${name_imagen}:${tag_imagen}
                     '''
                     }
                     
@@ -45,7 +44,6 @@ pipeline {
             steps {
                 script{
                     sh ''' 
-                        docker run -it -v /etc/localtime/:etc/localtime -v $HOME/.rainboow_oauth:root/.rainbow_oauth -v $HOME/.rainbow_config.json:/root/.rainbow_config.json --name ${name_final} ${name_imagen}
                         docker run -d -p 8000:8000 -p 9443:9443 --name ${name_final} --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data ${name_imagen}:${tag_imagen}
                     '''
                     }
